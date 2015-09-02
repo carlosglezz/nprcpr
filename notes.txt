@@ -1,0 +1,29 @@
+option explicit 
+ 
+
+ 
+    Dim oSession  11111111      ' AS NotesSession 
+    Dim strServer 
+    Dim strUserName 
+    Dim strMailDbName 
+    Dim oCurrentMailDb  ' as NOTESDATABASE 
+    Dim oMailDoc        ' as NOTESDOCUMENT 
+    Dim ortItem         ' as NOTESRICHTEXTITEM 
+
+    cstrAttachment =  "emailAttachment_"
+ 
+
+ 
+    with oMailDoc 
+        .SendTo = "correo"
+        .BlindCopyTo = "correo2"
+        .CopyTo = "correo3" 
+        .Subject = "asunto"  
+    end with 
+
+	
+	    Dim ortAttacment    ' as NOTESRICHTEXTITEM 
+    Dim oEmbedObject    ' as ???? 
+    dim cstrAttachment 
+    Dim blAttachment 
+ 
