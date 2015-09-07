@@ -58,9 +58,12 @@ class addXPRDataTSEAlert {
     
     private void add2ExistingReport() throws InterruptedException {
         final SwingWorker worker = new SwingWorker() {
+            
             @Override
+            
             protected Object doInBackground() throws Exception {
                 try {
+                      Thread.sleep(160);
                     FileInputStream file = new FileInputStream(new File("C:\\softwaretest\\FileOutput\\TSE_Manager\\NPR_CPR_Report_"+ requestorManager +".xls"));
                     HSSFWorkbook workbook = new HSSFWorkbook(file);
                     HSSFSheet sheet = workbook.getSheetAt(0);
@@ -113,6 +116,7 @@ class addXPRDataTSEAlert {
             protected Object doInBackground() throws Exception {
                 
                 try {
+                      Thread.sleep(160);
                     FileInputStream file = new FileInputStream(new File("C:\\softwaretest\\template.xls"));
                     HSSFWorkbook workbook = new HSSFWorkbook(file);
                     HSSFSheet sheet = workbook.getSheetAt(0);
