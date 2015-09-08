@@ -186,7 +186,7 @@ class addXPRDataQuality {
     }
 
     private String getQuality() {
-             String Quality=null;
+             String Quality="No_Exist";
         
         try {
             FileInputStream file = new FileInputStream(new File("C:\\softwaretest\\LibraryTest.xls"));

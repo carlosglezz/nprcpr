@@ -117,24 +117,6 @@ public class AddXPRData {
                             cell = sheet.getRow(i).getCell(7);
                             //    cell.setCellStyle(cellStyle);
                             cell.setCellValue(requestType);
-            
-                            if((Integer.parseInt(dayFromSubmit) > 19 && requestType.equals("NPR")) ||(Integer.parseInt(dayFromSubmit) > 12 && requestType.equals("CPR")) )//to TSE cc Manager
-                            {
-                                dataTSEAlert.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
-                                dataTSEAlert.addRow2File();
-                            }
-                            
-                            if(Integer.parseInt(dayFromSubmit) > 40  &&  Integer.parseInt(dayFromSubmit) <= 90)//to Manager cc TSE
-                            {
-                                dataManager.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
-                                dataManager.addRow2File();
-                            }
-                            
-                            if(Integer.parseInt(dayFromSubmit) > 90  )//to leslie cc Manager
-                            {
-                                dataQuality.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
-                                dataQuality.addRow2File();
-                            }
                             
                             i=sheetsize;
                             
@@ -146,6 +128,26 @@ public class AddXPRData {
                     FileOutputStream outFile =new FileOutputStream(new File("C:\\softwaretest\\FileOutput\\NPR_CPR_Report_"+ requestorID +".xls"));
                     workbook.write(outFile);
                     outFile.close();
+                    Thread.sleep(160);
+                    if((Integer.parseInt(dayFromSubmit) > 19 && requestType.equals("NPR") && Integer.parseInt(dayFromSubmit)<= 40) ||(Integer.parseInt(dayFromSubmit) > 12 && requestType.equals("CPR") && Integer.parseInt(dayFromSubmit)<= 40 ) )//to TSE cc Manager
+                    {
+                        dataTSEAlert.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
+                        dataTSEAlert.addRow2File();
+                    }
+                    
+                    if(Integer.parseInt(dayFromSubmit) > 40  &&  Integer.parseInt(dayFromSubmit) <= 90)//to Manager cc TSE
+                    {
+                        dataManager.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
+                        dataManager.addRow2File();
+                    }
+                    
+                    if(Integer.parseInt(dayFromSubmit) > 90  )//to leslie cc Manager
+                    {
+                        dataQuality.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
+                        dataQuality.addRow2File();
+                    }
+                    
+                    
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -156,7 +158,7 @@ public class AddXPRData {
             }
         };
         worker.execute();
-        Thread.sleep(160);
+        Thread.sleep(260);
     }
     
     private void createNewFileReport() throws InterruptedException
@@ -217,30 +219,29 @@ public class AddXPRData {
                     cell.setCellValue(requestType);
                     
                     
-                    if((Integer.parseInt(dayFromSubmit) > 19 && requestType.equals("NPR")) ||(Integer.parseInt(dayFromSubmit) > 12 && requestType.equals("CPR")) )//to TSE cc Manager
-                            {
-                                dataTSEAlert.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
-                                dataTSEAlert.addRow2File();
-                            }
-                            
-                            if(Integer.parseInt(dayFromSubmit) > 40 &&  Integer.parseInt(dayFromSubmit) <= 90)//to Manager cc TSE
-                            {
-                                dataManager.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
-                                dataManager.addRow2File();
-                            }
-                            
-                            if(Integer.parseInt(dayFromSubmit) > 90  )//to leslie cc Manager
-                            {
-                                dataQuality.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
-                                dataQuality.addRow2File();
-                            }
-                    
-                    
-                    
                     file.close();
                     FileOutputStream outFile =new FileOutputStream(new File("C:\\softwaretest\\FileOutput\\NPR_CPR_Report_"+ requestorID +".xls"));
                     workbook.write(outFile);
                     outFile.close();
+                     Thread.sleep(160);
+                    if((Integer.parseInt(dayFromSubmit) > 19 && requestType.equals("NPR") && Integer.parseInt(dayFromSubmit)<= 40) ||(Integer.parseInt(dayFromSubmit) > 12 && requestType.equals("CPR") && Integer.parseInt(dayFromSubmit)<= 40 ) )//to TSE cc Manager
+                    {
+                        dataTSEAlert.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
+                        dataTSEAlert.addRow2File();
+                    }
+                    
+                    if(Integer.parseInt(dayFromSubmit) > 40 &&  Integer.parseInt(dayFromSubmit) < 90)//to Manager cc TSE
+                    {
+                        dataManager.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
+                        dataManager.addRow2File();
+                    }
+                    
+                    if(Integer.parseInt(dayFromSubmit) > 90  )//to leslie cc Manager
+                    {
+                        dataQuality.setRowData(requestStatus,requestID,requestorID,dayFromSubmit,requestType,submitDate);//Establece los datos del row actual que seran agregados al excel
+                        dataQuality.addRow2File();
+                    }
+                    
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -251,6 +252,6 @@ public class AddXPRData {
             }
         };
         worker.execute();
-        Thread.sleep(160);
+        Thread.sleep(260);
     }
 }
